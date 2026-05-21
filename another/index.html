@@ -1,1 +1,62 @@
+<!doctype html>
+<html lang="hu">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ZH feladat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <p>Jobbágy Bertalan IQGW2b</p>
+    <h1>WEB-PROGRAMOZÁS I</h1>
+    <form action="assets/feldolgoz.php" method="post" onsubmit="return ellenoriz();">
+        <table>
+            <tr>
+                <td colspan="3">
+                    <h2>Regisztráció:</h2>
+                </td>
+                <td rowspan="7">
+                    <img src="assets/0.avif" alt="">
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="email">E-mail:</label></td>
+                <td><input type="text" id="email" name="email"></td>
+            </tr>
+            <tr>
+                <td><label for="name">Név:</label></td>
+                <td><input type="text" id="name" name="name"></td>
+            </tr>
+            <tr>
+                <td> <label for="pw">Jelszó: </label></td>
+                <td><input type="password" id="pw" name="pw"></td>
+            </tr>
+            <tr>
+                <td><label for="age">Kor: </label></td>
+                <td><input type="number" id="age" name="age"></td>
+            </tr>
+            <tr>
+                <td><label for="gender">Nem:</label></td>
+                <td><input type="radio" id="woman" name="gender" value="woman">
+                    <label for="woman">Nő</label>
+
+                    <input type="radio" id="man" name="gender" value="man">
+                    <label for="man">Férfi</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td> <input class="gomb" type="submit" id="kuld" value="Küldés"></td>
+            </tr>
+        </table>
+    </form>
+    <script src="assets/main.js"></script>
+</body>
+
+</html>
+
+
+<!--94-99 oldalig js és ph ellenőrzés és form feldolgozása js-ben-->

@@ -1,0 +1,16 @@
+body{
+    background-color:#99f;
+}
+
+h1{
+    text-align: center;
+}
+table,th,td{
+    padding: 5px;
+
+}
+img{
+    width: 200px;
+    height: 200px;
+}
+

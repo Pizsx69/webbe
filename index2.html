@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Termékrendelés</title>
+    <style>
+        body {
+            /* A háttérszín a feladat leírása alapján */
+            background-color: rgb(228, 185, 91);
+            font-family: sans-serif;
+        }
+        .container {
+            display: flex;
+        }
+        form {
+            margin-right: 50px;
+        }
+    </style>
+    <script>
+        function ellenoriz() {
+            var rendben = true;
+
+            var nev = document.getElementById('nev');
+            var email = document.getElementById('email');
+            var darab = document.getElementById('darab');
+            var nap = document.getElementById('nap');
+
+            // Alap háttérszín visszaállítása minden ellenőrzés előtt
+            nev.style.backgroundColor = "";
+            email.style.backgroundColor = "";
+            darab.style.backgroundColor = "";
+            nap.style.backgroundColor = "";
+
+            // a) Minden mező kötelező (nincs üres mező)
+            // b) A név minimum 8 és maximum 30 karakter hosszú
+            if (nev.value.trim() === "" || nev.value.length < 8 || nev.value.length > 30) {
+                nev.style.backgroundColor = "#f99";
+                rendben = false;
+            }
+
+            // c) Az e-mail mező ellenőrzése a megadott reguláris kifejezéssel
+            var checkPattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            if (email.value.trim() === "" || !checkPattern.test(email.value)) {
+                email.style.backgroundColor = "#f99";
+                rendben = false;
+            }
+
+            // d) A darab csak szám lehet, minimum 1, maximum 10
+            var darabSzam = parseInt(darab.value);
+            if (darab.value.trim() === "" || isNaN(darabSzam) || darabSzam < 1 || darabSzam > 10 || !/^\d+$/.test(darab.value)) {
+                darab.style.backgroundColor = "#f99";
+                rendben = false;
+            }
+
+            // e) A lenyíló listában az 5 megadott napnév közül egy ki van választva
+            var napok = ["hétfő", "kedd", "szerda", "csütörtök", "péntek"];
+            if (nap.value.trim() === "" || !napok.includes(nap.value)) {
+                nap.style.backgroundColor = "#f99";
+                rendben = false;
+            }
+
+            // Ha hamis (false), akkor a form nem küldődik el a feldolgoz.php-nek
+            return rendben;
+        }
+    </script>
+</head>
+<body>
+    <p>Név: [Ide írd a Neved] | Neptun kód: [Ide írd a Kódod]</p>
+
+    <h1>Termékrendelés</h1>
+    <h2>Termék - Laptop-01</h2>
+
+    <div class="container">
+        <form action="feldolgoz.php" method="POST" onsubmit="return ellenoriz();">
+            <label for="nev">Név:</label><br>
+            <input type="text" id="nev" name="nev"><br><br>
+
+            <label for="email">E-mail:</label><br>
+            <input type="text" id="email" name="email"><br><br>
+
+            <label for="darab">Darab:</label><br>
+            <input type="text" id="darab" name="darab"><br><br>
+
+            <label for="nap">Nap:</label><br>
+            <select id="nap" name="nap">
+                <option value="">Válasszon!</option>
+                <option value="hétfő">hétfő</option>
+                <option value="kedd">kedd</option>
+                <option value="szerda">szerda</option>
+                <option value="csütörtök">csütörtök</option>
+                <option value="péntek">péntek</option>
+            </select><br><br>
+
+            <input type="submit" value="Küldés">
+        </form>
+
+        <div>
+            <img src="laptop.jpg" alt="Laptop-01" width="300">
+        </div>
+    </div>
+</body>
+</html>
